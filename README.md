@@ -1,5 +1,5 @@
 # PlayDiaryApp
 ## stack
-Typescript
-React Native
-Redux Tookit
+Typescript  
+React Native  
+Redux Tookit  
