@@ -10,8 +10,8 @@ function AppMain() {
   // ) : (
   //   <AuthStackNavigator />
   // )
-  return <RootBottomTabNavigator />
-  // return <AuthStackNavigator />
-};
+  return <RootBottomTabNavigator />;
+  // return <AuthStackNavigator />;
+}
 
 export default AppMain;
