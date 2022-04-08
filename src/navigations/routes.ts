@@ -1,12 +1,15 @@
 export const routes = {
   root: {
-    SETTING_SCREEN: 'mypage/setting',
-    CHANGE_PROFILE_SCREEN: 'mypage/change-profile',
-    CHANGE_PASSWORD_SCREEN: 'mypage/change-password',
+    INIT: '/',
+    PLAY_DETAIL_SCREEN: 'root/play-detail',
+    SETTING_SCREEN: 'root/mypage/setting',
+    CHANGE_PROFILE_SCREEN: 'root/mypage/change-profile',
+    CHANGE_PASSWORD_SCREEN: 'root/mypage/change-password',
   },
   tab: {
     home: {
-      HOME_SCREEN: 'tab/home',
+      HOME_STACK: 'tab/home',
+      HOME_SCREEN: 'tab/home/main',
     },
     search: {
       SEARCH_STACK: 'tab/search',
@@ -14,11 +17,13 @@ export const routes = {
       SEARCH_RESULT_SCREEN: 'tab/search/result',
     },
     calender: {
-      CALENDER_SCREERN: 'tab/calender',
+      CALENDER_STACK: 'tab/calender',
+      CALENDER_SCREERN: 'tab/calender/main',
     },
     mypage: {
       MYPAGE_STACK: 'tab/mypage',
       MYPAGE_SCREEN: 'tab/mypage/main',
+      STATISTICS_SCREEN: 'tab/mypage/statistics',
     },
   },
   auth: {

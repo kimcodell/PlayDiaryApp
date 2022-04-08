@@ -1,16 +1,16 @@
 import React from 'react';
-import RootBottomTabNavigator from './RootBottomTabNavigator';
-import AuthStackNavigator from './AuthStackNavigator';
 import { AppDispatch } from '../store';
 import { useSelector } from 'react-redux';
+import RootStackNavigator from './RootStackNavigator';
+import AuthStackNavigator from './AuthStackNavigator';
 
 function AppMain() {
   // return jwt ? (
-  //   <RootBottomTabNavigation />
+  //   <RootStackNavigator />
   // ) : (
   //   <AuthStackNavigator />
   // )
-  return <RootBottomTabNavigator />;
+  return <RootStackNavigator />;
   // return <AuthStackNavigator />;
 }
 
