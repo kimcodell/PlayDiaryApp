@@ -51,7 +51,7 @@ function LogoutModal({ isVisible, setVisible }: ModalProps) {
               onPress={onLogout}
               accessibilityLabel="로그아웃"
               accessibilityRole="button"
-              underlayColor={AppColors.background}>
+              underlayColor={AppColors.pressEffect1}>
               <Text style={styles.buttonText}>로그아웃</Text>
             </TouchableHighlight>
             <TouchableHighlight

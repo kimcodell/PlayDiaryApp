@@ -1,6 +1,10 @@
 import { StyleSheet, Platform } from 'react-native';
 
 const fontStyles = StyleSheet.create({
+  text28: {
+    fontSize: 28,
+    ...(Platform.OS === 'ios' && { lineHeight: 28 }),
+  },
   text20: {
     fontSize: 20,
     ...(Platform.OS === 'ios' && { lineHeight: 20 }),
@@ -24,6 +28,10 @@ const fontStyles = StyleSheet.create({
   text10: {
     fontSize: 10,
     ...(Platform.OS === 'ios' && { lineHeight: 10 }),
+  },
+  text8: {
+    fontSize: 8,
+    ...(Platform.OS === 'ios' && { lineHeight: 8 }),
   },
 });
 

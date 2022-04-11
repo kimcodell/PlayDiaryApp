@@ -54,7 +54,7 @@ function ResignModal({ isVisible, setVisible }: ModalProps) {
               onPress={onResign}
               accessibilityLabel="탈퇴하기"
               accessibilityRole="button"
-              underlayColor={AppColors.background}>
+              underlayColor={AppColors.pressEffect1}>
               <Text style={styles.buttonText}>탈퇴하기</Text>
             </TouchableHighlight>
             <TouchableHighlight

@@ -75,7 +75,7 @@ function SettingScreen() {
             <Text style={styles.subtitleText}>내 설정</Text>
             <TouchableHighlight
               onPress={onPressChangeProfile}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="프로필 수정"
               accessibilityRole="button">
               <View style={styles.tabContainer}>
@@ -85,7 +85,7 @@ function SettingScreen() {
             </TouchableHighlight>
             <TouchableHighlight
               onPress={onPressChangePassword}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="비밀번호 변경"
               accessibilityRole="button">
               <View style={styles.tabContainer}>
@@ -96,7 +96,7 @@ function SettingScreen() {
             <TouchableHighlight
               style={styles.tabContainer}
               onPress={onPressLogout}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="로그아웃"
               accessibilityRole="button">
               <Text style={styles.tabText}>로그아웃</Text>
@@ -104,7 +104,7 @@ function SettingScreen() {
             <TouchableHighlight
               style={styles.tabContainer}
               onPress={onPressResign}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="회원 탈퇴"
               accessibilityRole="button">
               <Text style={styles.tabText}>회원 탈퇴</Text>
@@ -118,7 +118,7 @@ function SettingScreen() {
             <Text style={styles.subtitleText}>OO 정보</Text>
             <TouchableHighlight
               onPress={onPressPrivacyPolicy}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="개인정보 처리방침"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
@@ -128,7 +128,7 @@ function SettingScreen() {
             </TouchableHighlight>
             <TouchableHighlight
               onPress={onPressTermsOfUse}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="서비스 이용약관"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
@@ -148,7 +148,7 @@ function SettingScreen() {
             <Text style={styles.subtitleText}>기타</Text>
             <TouchableHighlight
               onPress={onPressDbRequest}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="DB 등록/수정 요청"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
@@ -158,7 +158,7 @@ function SettingScreen() {
             </TouchableHighlight>
             <TouchableHighlight
               onPress={onPressCustomerService}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="기타 문의"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
@@ -168,7 +168,7 @@ function SettingScreen() {
             </TouchableHighlight>
             <TouchableHighlight
               onPress={onPressNotice}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="공지사항"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
@@ -178,7 +178,7 @@ function SettingScreen() {
             </TouchableHighlight>
             <TouchableHighlight
               onPress={onPressFAQ}
-              underlayColor={AppColors.background}
+              underlayColor={AppColors.pressEffect1}
               accessibilityLabel="자주 묻는 질문"
               accessibilityRole="link">
               <View style={styles.tabContainer}>
