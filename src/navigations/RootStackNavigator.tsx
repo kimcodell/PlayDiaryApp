@@ -15,7 +15,9 @@ const Stack = createNativeStackNavigator();
 function RootStackNavigator() {
   return (
     <SafeAreaView style={tailwind`flex-1`}>
-      <Stack.Navigator initialRouteName={routes.root.INIT}>
+      <Stack.Navigator
+        initialRouteName={routes.root.INIT}
+        screenOptions={{ title: '' }}>
         <Stack.Screen
           name={routes.root.INIT}
           component={AppBottomTabNavigator}

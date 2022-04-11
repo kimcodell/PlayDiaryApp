@@ -5,7 +5,7 @@ import PlayListScene from './PlayListScene';
 import MusicalListScene from './MusicalListScene';
 
 import AppColors from '../../utils/AppColors';
-import { fontStyles } from '../../assets/styles/fontStyles';
+import fontStyles from '../../assets/styles/fontStyles';
 
 const renderScene = SceneMap({
   play: PlayListScene,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: AppColors.white,
   },
   labelText: {
-    ...fontStyles.text1, //TODO 디자인 완성 후 수정 필요.
+    ...fontStyles.text20, //TODO 디자인 완성 후 수정 필요.
     color: AppColors.textSecondary,
   },
 });

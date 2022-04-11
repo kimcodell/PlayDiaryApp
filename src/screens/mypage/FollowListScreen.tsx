@@ -4,7 +4,7 @@ import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
 import FollowerListScene from './FollowerListScene';
 import FollowingListScene from './FollowingListScene';
 
-import { fontStyles } from '../../assets/styles/fontStyles';
+import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
 
 const renderScene = SceneMap({
@@ -45,7 +45,8 @@ export default FollowListScreen;
 
 const styles = StyleSheet.create({
   labelText: {
-    ...fontStyles.text1, //TODO 디자인 완성 후 수정 필요.
+    ...fontStyles.text16, //TODO 디자인 완성 후 수정 필요.
+    fontWeight: '700',
     color: AppColors.textSecondary,
   },
 });

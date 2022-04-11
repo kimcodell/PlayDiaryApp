@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ChevronLefttIcon from '../../assets/icons/ChevronLeftIcon';
 
-import { fontStyles } from '../../assets/styles/fontStyles';
+import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
 
 function CommonHeader({ headerTitle }: { headerTitle: string }) {
@@ -14,7 +14,7 @@ function CommonHeader({ headerTitle }: { headerTitle: string }) {
   return (
     <View style={styles.container}>
       <Pressable onPress={onPressBack}>
-        <ChevronLefttIcon width={16} height={16} />
+        <ChevronLefttIcon width={20} height={20} />
       </Pressable>
       <Text style={styles.titleText}>{headerTitle}</Text>
     </View>
@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleText: {
-    // ...fontStyles., //TODO 디자인 완성 후 수정 필요.
+    ...fontStyles.text20, //TODO 디자인 완성 후 수정 필요.
     color: AppColors.textPrimary,
     marginLeft: 6,
+    fontWeight: '700',
   },
 });
