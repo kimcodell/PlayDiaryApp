@@ -1,12 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View, StyleSheet } from 'react-native';
+import { navigate } from '../../utils/RootNavigation';
+
+import { routes } from '../../navigations/routes';
 
 function MypageScreen() {
   return (
     <View>
-      <Text>마이페이지</Text>
+      <Pressable onPress={() => navigate(routes.tab.mypage.SETTING_SCREEN)}>
+        <Text>q</Text>
+      </Pressable>
     </View>
   );
 }
 
 export default MypageScreen;
+
+const styles = StyleSheet.create({});

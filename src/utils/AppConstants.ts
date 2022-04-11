@@ -10,6 +10,9 @@ export const AppConstants = Object.freeze({
   URL: {
     PRIVACY_POLICY: '',
     TERMS_OF_USE: '',
+    DB_REQUEST: '',
+    CS_CENTER: '',
+    NOTICE: '',
     FAQ: '',
   },
 });

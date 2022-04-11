@@ -3,12 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AppBottomTabNavigator from './AppBottomTabNavigator';
 import PlayDetailScreen from '../screens/root/PlayDetailScreen';
-import SettingScreen from '../screens/root/setting/SettingScreen';
 import ChangeProfileScreen from '../screens/root/setting/ChangeProfileScreen';
 import ChangePasswordScreen from '../screens/root/setting/ChangePasswordScreen';
 
 import tailwind from 'twrnc';
 import { routes } from './routes';
+import CommonHeader from '../components/common/CommonHeader';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,16 +27,18 @@ function RootStackNavigator() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name={routes.root.SETTING_SCREEN}
-          component={SettingScreen}
-        />
-        <Stack.Screen
           name={routes.root.CHANGE_PROFILE_SCREEN}
           component={ChangeProfileScreen}
+          options={{
+            headerLeft: () => <CommonHeader headerTitle="프로필 수정" />,
+          }}
         />
         <Stack.Screen
           name={routes.root.CHANGE_PASSWORD_SCREEN}
           component={ChangePasswordScreen}
+          options={{
+            headerLeft: () => <CommonHeader headerTitle="비밀번호 변경" />,
+          }}
         />
       </Stack.Navigator>
     </SafeAreaView>

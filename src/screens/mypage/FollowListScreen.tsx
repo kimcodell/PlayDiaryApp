@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
-import PlayListScene from './PlayListScene';
-import MusicalListScene from './MusicalListScene';
+import FollowerListScene from './FollowerListScene';
+import FollowingListScene from './FollowingListScene';
 
-import AppColors from '../../utils/AppColors';
 import { fontStyles } from '../../assets/styles/fontStyles';
+import AppColors from '../../utils/AppColors';
 
 const renderScene = SceneMap({
-  play: PlayListScene,
-  musical: MusicalListScene,
+  play: FollowerListScene,
+  musical: FollowingListScene,
 });
 
 const renderTabBar = (props: any) => (
   <TabBar
     {...props}
-    renderIndicator={() => null}
-    style={{}}
-    contentContainerStyle={styles.tabBarContainer}
     pressOpacity={undefined}
     pressColor={undefined}
     labelStyle={styles.labelText}
@@ -27,11 +24,11 @@ const renderTabBar = (props: any) => (
 );
 
 const routes = [
-  { key: 'play', title: '연극' },
-  { key: 'musical', title: '뮤지컬' },
+  { key: 'followers', title: '팔로워' },
+  { key: 'followings', title: '팔로잉' },
 ];
 
-function HomeScreen() {
+function FollowListScreen() {
   const [index, setIndex] = useState(0);
 
   return (
@@ -44,12 +41,9 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default FollowListScreen;
 
 const styles = StyleSheet.create({
-  tabBarContainer: {
-    backgroundColor: AppColors.white,
-  },
   labelText: {
     ...fontStyles.text1, //TODO 디자인 완성 후 수정 필요.
     color: AppColors.textSecondary,

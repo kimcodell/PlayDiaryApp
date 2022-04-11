@@ -2,7 +2,6 @@ export const routes = {
   root: {
     INIT: '/',
     PLAY_DETAIL_SCREEN: 'root/play-detail',
-    SETTING_SCREEN: 'root/mypage/setting',
     CHANGE_PROFILE_SCREEN: 'root/mypage/change-profile',
     CHANGE_PASSWORD_SCREEN: 'root/mypage/change-password',
   },
@@ -24,6 +23,8 @@ export const routes = {
       MYPAGE_STACK: 'tab/mypage',
       MYPAGE_SCREEN: 'tab/mypage/main',
       STATISTICS_SCREEN: 'tab/mypage/statistics',
+      FOLLOW_LIST_SCREEN: 'tab/mypage/follows',
+      SETTING_SCREEN: 'root/mypage/setting',
     },
   },
   auth: {
