@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -31,7 +31,7 @@ function PlayCommonComponent({ playData }: { playData: Play }) {
 
   return (
     <TouchableHighlight
-      style={tailwind`mb-2.5`}
+      style={tailwind`pb-2`}
       onPress={onPress}
       underlayColor={AppColors.pressEffect1}
       accessibilityLabel={`${title} 상세보기`}
@@ -58,11 +58,12 @@ function PlayCommonComponent({ playData }: { playData: Play }) {
   );
 }
 
-export default PlayCommonComponent;
+export default memo(PlayCommonComponent);
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   contentContainer: {
     flex: 1,

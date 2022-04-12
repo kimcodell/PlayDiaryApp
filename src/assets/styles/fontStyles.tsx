@@ -1,6 +1,13 @@
 import { StyleSheet, Platform } from 'react-native';
+import AppColors from '../../utils/AppColors';
 
 const fontStyles = StyleSheet.create({
+  header2: {
+    fontSize: 20,
+    lineHeight: 24,
+    fontWeight: '700',
+    color: AppColors.textPrimary,
+  },
   text28: {
     fontSize: 28,
     ...(Platform.OS === 'ios' && { lineHeight: 28 }),

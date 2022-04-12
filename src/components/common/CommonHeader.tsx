@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ChevronLefttIcon from '../../assets/icons/ChevronLeftIcon';
+import ChevronLeftIcon from '../../assets/icons/ChevronLeftIcon';
 
 import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
@@ -14,7 +14,7 @@ function CommonHeader({ headerTitle }: { headerTitle: string }) {
   return (
     <View style={styles.container}>
       <Pressable onPress={onPressBack}>
-        <ChevronLefttIcon width={20} height={20} />
+        <ChevronLeftIcon width={20} height={20} />
       </Pressable>
       <Text style={styles.titleText}>{headerTitle}</Text>
     </View>

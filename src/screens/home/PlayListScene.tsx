@@ -46,8 +46,13 @@ function PlayListScene({
   sizeOptions: Array<{ name: string; selected: boolean }>;
 }) {
   const [refreshing, setRefreshing] = useState(false);
-  const [playData, setPlaysData] = useState<Play[]>(test);
+  const [playData, setPlaysData] = useState<Play[]>([]);
   const [filteredData, setFilteredData] = useState<Play[]>([]);
+
+  useEffect(() => {
+    //TODO 데이터 받아오기
+    setPlaysData(test);
+  }, []);
 
   useEffect(() => {
     const index = sizeOptions.findIndex(option => option.selected);
@@ -58,12 +63,13 @@ function PlayListScene({
     } else if (index === 2) {
       setFilteredData(playData.filter(play => play.auditoriumSize === 2));
     }
-  }, [sizeOptions]);
+  }, [sizeOptions, playData]);
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     //TODO 데이터 요청 연결
     console.log('데이터 로딩');
+    setPlaysData(test);
     setRefreshing(false);
   }, []);
 
@@ -77,6 +83,7 @@ function PlayListScene({
       ListEmptyComponent={() => (
         <HomeListEmptyComponent refreshing={refreshing} onRefresh={onRefresh} />
       )}
+      showsVerticalScrollIndicator={false}
     />
   );
 }
