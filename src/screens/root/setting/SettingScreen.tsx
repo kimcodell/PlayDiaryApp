@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
   partContainer: {
     paddingHorizontal: 20,
     paddingTop: 14,
+    paddingBottom: 10,
   },
   subtitleText: {
     ...fontStyles.text16,
