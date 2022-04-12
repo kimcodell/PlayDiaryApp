@@ -1,15 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import tailwind from 'twrnc';
+import useRecentResearch from '../../utils/hooks/useRecentSearch';
+import StorageHelper from '../../utils/StorageHelper';
+import { navigate } from '../../utils/RootNavigation';
+import { routes } from '../../navigations/routes';
 import Play from '../../interfaces/Play';
 import SearchInput from '../../components/input/SearchInput';
 import PlayCommonComponent from '../../components/plays/PlayCommonComponent';
+import SearchKeywordTab from '../../components/common/SearchKeywordTab';
 
+import { AppConstants } from '../../utils/AppConstants';
 import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
-import StorageHelper from '../../utils/StorageHelper';
-import { AppConstants } from '../../utils/AppConstants';
 
 const test: Play[] = [
   {
@@ -78,57 +82,34 @@ const test: Play[] = [
     startDate: '2022-04-02T05:00:00.000Z',
     endDate: '2022-04-20T05:00:00.000Z',
   },
-  {
-    playId: 3,
-    title: '아이다',
-    poster:
-      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
-    auditorium: '충무아트센터 대극장',
-    auditoriumSize: 2,
-    genre: '연극',
-    startDate: '2022-04-02T05:00:00.000Z',
-    endDate: '2022-04-20T05:00:00.000Z',
-  },
-  {
-    playId: 3,
-    title: '아이다',
-    poster:
-      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
-    auditorium: '충무아트센터 대극장',
-    auditoriumSize: 2,
-    genre: '연극',
-    startDate: '2022-04-02T05:00:00.000Z',
-    endDate: '2022-04-20T05:00:00.000Z',
-  },
-  {
-    playId: 3,
-    title: '아이다',
-    poster:
-      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
-    auditorium: '충무아트센터 대극장',
-    auditoriumSize: 2,
-    genre: '연극',
-    startDate: '2022-04-02T05:00:00.000Z',
-    endDate: '2022-04-20T05:00:00.000Z',
-  },
-  {
-    playId: 3,
-    title: '아이다',
-    poster:
-      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
-    auditorium: '충무아트센터 대극장',
-    auditoriumSize: 2,
-    genre: '연극',
-    startDate: '2022-04-02T05:00:00.000Z',
-    endDate: '2022-04-20T05:00:00.000Z',
-  },
 ];
 
 function SearchScreen() {
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [hotPlayData, setHotPlayData] = useState<Play[]>([]);
-  const [recentSearch, setRecentSearch] = useState<any[]>([]);
+
+  const [recentSearch, pushSearch, clearRecentSearch] = useRecentResearch();
+
+  const onSubmitSearch = useCallback(
+    (keyword: string) => async () => {
+      pushSearch(keyword);
+      await StorageHelper.storeObject(
+        AppConstants.STORAGE_KEYS.RECENT_SEARCH,
+        recentSearch,
+      );
+      setSearchKeyword('');
+      navigate(routes.tab.search.SEARCH_RESULT_SCREEN, {
+        keyword,
+      });
+    },
+    [recentSearch],
+  );
+
+  const onDeleteAllSearch = useCallback(async () => {
+    await StorageHelper.removeData(AppConstants.STORAGE_KEYS.RECENT_SEARCH);
+    clearRecentSearch();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -137,48 +118,53 @@ function SearchScreen() {
     })();
   }, []);
 
-  const getRecentSearch = useCallback(async () => {
-    return await StorageHelper.getObject(
-      AppConstants.STORAGE_KEYS.RECENT_SEARCH,
-    );
-  }, []);
-
-  const pushRecentSearch = useCallback(async () => {
-    const newList = Array.from(recentSearch).slice(1);
-    newList.push(searchKeyword);
-    await StorageHelper.storeObject(
-      AppConstants.STORAGE_KEYS.RECENT_SEARCH,
-      newList,
-    );
-  }, []);
-
-  useEffect(() => {
-    const recentSearch = getRecentSearch();
-    setRecentSearch(Array.from(recentSearch));
-  }, []);
-
   return (
     <KeyboardAwareScrollView
       style={tailwind`flex-1`}
       enableOnAndroid={true}
       stickyHeaderIndices={[0]}
       showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
       bounces={false}>
       <View style={styles.searchBar}>
         <SearchInput
           inputValue={searchKeyword}
           onChangeInputValue={setSearchKeyword}
+          onSubmit={onSubmitSearch(searchKeyword)}
           setIsFocused={setIsFocused}
         />
       </View>
-      <View style={tailwind`flex-1 p-5`}>
-        <Text style={styles.headerText}>요즘 뜨는 작품</Text>
-        {isFocused
-          ? recentSearch.map((item, index) => <></>)
-          : hotPlayData.map((play, index) => (
-              <PlayCommonComponent key={index} playData={play} />
-            ))}
-      </View>
+      {!isFocused && hotPlayData.length !== 0 ? (
+        <View style={tailwind`flex-1 p-5`}>
+          <Text style={styles.headerText}>요즘 뜨는 작품</Text>
+          {hotPlayData.map((play, index) => (
+            <PlayCommonComponent key={index} playData={play} />
+          ))}
+        </View>
+      ) : (
+        <View style={tailwind`flex-1 p-5`}>
+          {recentSearch.length !== 0 && (
+            <>
+              <View
+                style={tailwind`flex-row items-center justify-between mb-2.5`}>
+                <Text style={[styles.headerText, tailwind`mb-0`]}>
+                  최근 검색어
+                </Text>
+                <Pressable onPress={onDeleteAllSearch}>
+                  <Text style={styles.deleteButtonText}>모두 삭제</Text>
+                </Pressable>
+              </View>
+              {recentSearch.map((search, index) => (
+                <SearchKeywordTab
+                  key={index}
+                  keyword={search}
+                  onPress={onSubmitSearch}
+                />
+              ))}
+            </>
+          )}
+        </View>
+      )}
     </KeyboardAwareScrollView>
   );
 }
@@ -197,5 +183,9 @@ const styles = StyleSheet.create({
   headerText: {
     ...fontStyles.header2,
     marginBottom: 10,
+  },
+  deleteButtonText: {
+    ...fontStyles.text16,
+    color: AppColors.error,
   },
 });

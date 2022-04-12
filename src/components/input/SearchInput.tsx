@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useCallback } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import {
   View,
   TextInput,
@@ -13,6 +13,7 @@ import AppColors from '../../utils/AppColors';
 interface SearchInputProps {
   inputValue: string;
   onChangeInputValue: Dispatch<SetStateAction<string>>;
+  onSubmit: () => void;
   setIsFocused?: Dispatch<SetStateAction<boolean>>;
   defaultValue?: string;
   style?: StyleProp<ViewStyle>;
@@ -21,15 +22,11 @@ interface SearchInputProps {
 function SearchInput({
   inputValue,
   onChangeInputValue,
+  onSubmit,
   setIsFocused,
   defaultValue,
   style,
 }: SearchInputProps) {
-  const onSubmitSearch = useCallback(() => {
-    //TODO 검색 API 연동 작업 필요.
-    console.log(inputValue, '검색');
-  }, [inputValue]);
-
   return (
     <View style={[styles.searchInputContainer, style]}>
       <SearchIcon color={AppColors.textSecondary} />
@@ -40,6 +37,8 @@ function SearchInput({
         returnKeyType="search"
         clearButtonMode="always"
         maxLength={64}
+        autoCapitalize="none"
+        autoCorrect={false}
         value={inputValue}
         onChangeText={onChangeInputValue}
         onEndEditing={() => {
@@ -48,7 +47,7 @@ function SearchInput({
         onFocus={() => {
           setIsFocused && setIsFocused(true);
         }}
-        onSubmitEditing={onSubmitSearch}
+        onSubmitEditing={onSubmit}
         defaultValue={defaultValue && defaultValue}
       />
     </View>

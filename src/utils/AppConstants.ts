@@ -16,4 +16,7 @@ export const AppConstants = Object.freeze({
     NOTICE: '',
     FAQ: '',
   },
+  NUMBERS: {
+    RECENT_SEARCH_LENGTH: 8,
+  },
 });
