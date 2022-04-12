@@ -2,6 +2,7 @@ export const AppConstants = Object.freeze({
   STORAGE_KEYS: {
     TOKEN: 'token',
     FCM_TOKEN: 'fcm-token',
+    RECENT_SEARCH: 'recent-search',
   },
   LOGIN_TYPES: {
     EMAIL: 'email',

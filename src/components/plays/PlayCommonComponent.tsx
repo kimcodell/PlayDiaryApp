@@ -31,7 +31,7 @@ function PlayCommonComponent({ playData }: { playData: Play }) {
 
   return (
     <TouchableHighlight
-      style={tailwind`mb-2.5`}
+      style={tailwind`pb-2`}
       onPress={onPress}
       underlayColor={AppColors.pressEffect1}
       accessibilityLabel={`${title} 상세보기`}

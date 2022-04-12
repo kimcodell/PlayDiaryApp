@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import {
-  KeyboardAwareFlatList,
-  KeyboardAwareScrollView,
-} from 'react-native-keyboard-aware-scroll-view';
+import React, { useCallback, useEffect, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import tailwind from 'twrnc';
 import Play from '../../interfaces/Play';
 import SearchInput from '../../components/input/SearchInput';
@@ -11,6 +8,8 @@ import PlayCommonComponent from '../../components/plays/PlayCommonComponent';
 
 import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
+import StorageHelper from '../../utils/StorageHelper';
+import { AppConstants } from '../../utils/AppConstants';
 
 const test: Play[] = [
   {
@@ -79,75 +78,108 @@ const test: Play[] = [
     startDate: '2022-04-02T05:00:00.000Z',
     endDate: '2022-04-20T05:00:00.000Z',
   },
+  {
+    playId: 3,
+    title: '아이다',
+    poster:
+      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
+    auditorium: '충무아트센터 대극장',
+    auditoriumSize: 2,
+    genre: '연극',
+    startDate: '2022-04-02T05:00:00.000Z',
+    endDate: '2022-04-20T05:00:00.000Z',
+  },
+  {
+    playId: 3,
+    title: '아이다',
+    poster:
+      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
+    auditorium: '충무아트센터 대극장',
+    auditoriumSize: 2,
+    genre: '연극',
+    startDate: '2022-04-02T05:00:00.000Z',
+    endDate: '2022-04-20T05:00:00.000Z',
+  },
+  {
+    playId: 3,
+    title: '아이다',
+    poster:
+      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
+    auditorium: '충무아트센터 대극장',
+    auditoriumSize: 2,
+    genre: '연극',
+    startDate: '2022-04-02T05:00:00.000Z',
+    endDate: '2022-04-20T05:00:00.000Z',
+  },
+  {
+    playId: 3,
+    title: '아이다',
+    poster:
+      'http://tkfile.yes24.com/Upload2/Display/202108/20210831/wel_mv_hide_s.jpg/dims/quality/70/',
+    auditorium: '충무아트센터 대극장',
+    auditoriumSize: 2,
+    genre: '연극',
+    startDate: '2022-04-02T05:00:00.000Z',
+    endDate: '2022-04-20T05:00:00.000Z',
+  },
 ];
 
 function SearchScreen() {
   const [searchKeyword, setSearchKeyword] = useState<string>('');
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [hotPlayData, setHotPlayData] = useState<Play[]>(test);
+  const [hotPlayData, setHotPlayData] = useState<Play[]>([]);
+  const [recentSearch, setRecentSearch] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
       //TODO 요즘 뜨는 작품 요청 API 작업 필요.
-      setHotPlayData([]);
+      setHotPlayData(test);
     })();
   }, []);
 
-  //TODO 미완. 스크롤뷰로 할 지 FlatList로 할지. & SearchInput focusing 테스트 필요.
+  const getRecentSearch = useCallback(async () => {
+    return await StorageHelper.getObject(
+      AppConstants.STORAGE_KEYS.RECENT_SEARCH,
+    );
+  }, []);
+
+  const pushRecentSearch = useCallback(async () => {
+    const newList = Array.from(recentSearch).slice(1);
+    newList.push(searchKeyword);
+    await StorageHelper.storeObject(
+      AppConstants.STORAGE_KEYS.RECENT_SEARCH,
+      newList,
+    );
+  }, []);
+
+  useEffect(() => {
+    const recentSearch = getRecentSearch();
+    setRecentSearch(Array.from(recentSearch));
+  }, []);
+
   return (
     <KeyboardAwareScrollView
       style={tailwind`flex-1`}
       enableOnAndroid={true}
+      stickyHeaderIndices={[0]}
       showsVerticalScrollIndicator={false}
       bounces={false}>
-      <View style={tailwind`flex-1`}>
-        <View style={styles.searchBar}>
-          <SearchInput
-            inputValue={searchKeyword}
-            onChangeInputValue={setSearchKeyword}
-            setIsFocused={setIsFocused}
-          />
-        </View>
-        <View style={tailwind`flex-1 p-5`}>
-          <Text style={styles.headerText}>요즘 뜨는 작품</Text>
-          {hotPlayData.map((play, index) => (
-            <PlayCommonComponent key={index} playData={play} />
-          ))}
-        </View>
+      <View style={styles.searchBar}>
+        <SearchInput
+          inputValue={searchKeyword}
+          onChangeInputValue={setSearchKeyword}
+          setIsFocused={setIsFocused}
+        />
+      </View>
+      <View style={tailwind`flex-1 p-5`}>
+        <Text style={styles.headerText}>요즘 뜨는 작품</Text>
+        {isFocused
+          ? recentSearch.map((item, index) => <></>)
+          : hotPlayData.map((play, index) => (
+              <PlayCommonComponent key={index} playData={play} />
+            ))}
       </View>
     </KeyboardAwareScrollView>
-
-    // //TODO Sticky Header 적용. props 활용 or relative
-    // <KeyboardAwareFlatList
-    //   // StickyHeaderComponent={() => (
-    //   //   <View style={styles.searchBar}>
-    //   //     <SearchInput
-    //   //       inputValue={searchKeyword}
-    //   //       onChangeInputValue={setSearchKeyword}
-    //   //       setIsFocused={setIsFocused}
-    //   //     />
-    //   //   </View>
-    //   // )}
-    //   ListHeaderComponent={() => (
-    //     <>
-    //       <View style={styles.searchBar}>
-    //         <SearchInput
-    //           inputValue={searchKeyword}
-    //           onChangeInputValue={setSearchKeyword}
-    //           setIsFocused={setIsFocused}
-    //         />
-    //       </View>
-    //       <Text style={styles.headerText}>요즘 뜨는 작품</Text>
-    //     </>
-    //   )}
-    //   stickyHeaderIndices={[0]}
-    //   data={hotPlayData}
-    //   renderItem={({ item }) => <PlayCommonComponent playData={item} />}
-    //   keyExtractor={(_, index) => index.toString()}
-    //   bounces={false}
-    //   showsVerticalScrollIndicator={false}
-    //   contentContainerStyle={tailwind`flex-1`}
-    // />
   );
 }
 
@@ -160,13 +192,10 @@ const styles = StyleSheet.create({
     paddingBottom: 14,
     borderBottomWidth: 1,
     borderBottomColor: AppColors.grayLine,
-    // position: 'relative',
-    // top: 0,
+    backgroundColor: AppColors.white,
   },
   headerText: {
     ...fontStyles.header2,
-    // paddingHorizontal: 20,
-    // marginTop: 20,
-    // marginBottom: 12,
+    marginBottom: 10,
   },
 });
