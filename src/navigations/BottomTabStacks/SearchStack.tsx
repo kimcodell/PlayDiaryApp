@@ -23,6 +23,9 @@ function SearchStack() {
       <Stack.Screen
         name={routes.tab.search.SEARCH_RESULT_SCREEN}
         component={SearchResultScreen}
+        options={{
+          animation: 'none',
+        }}
       />
     </Stack.Navigator>
   );

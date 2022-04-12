@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import {
   StyleSheet,
   View,
@@ -58,7 +58,7 @@ function PlayCommonComponent({ playData }: { playData: Play }) {
   );
 }
 
-export default PlayCommonComponent;
+export default memo(PlayCommonComponent);
 
 const styles = StyleSheet.create({
   container: {

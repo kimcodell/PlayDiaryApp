@@ -77,6 +77,7 @@ function PlayListScene({
       ListEmptyComponent={() => (
         <HomeListEmptyComponent refreshing={refreshing} onRefresh={onRefresh} />
       )}
+      showsVerticalScrollIndicator={false}
     />
   );
 }
