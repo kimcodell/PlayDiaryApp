@@ -1,4 +1,4 @@
-export const AppConstants = Object.freeze({
+const AppConstants = Object.freeze({
   STORAGE_KEYS: {
     TOKEN: 'token',
     FCM_TOKEN: 'fcm-token',
@@ -19,4 +19,12 @@ export const AppConstants = Object.freeze({
   NUMBERS: {
     RECENT_SEARCH_LENGTH: 8,
   },
+  BOTTOM_TAB_LABEL: {
+    HOME: '홈',
+    SEARCH: '검색',
+    CALENDAR: '캘린더',
+    MYPAGE: '나의 OO',
+  },
 });
+
+export default AppConstants;

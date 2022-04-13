@@ -1,7 +1,7 @@
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Text, View } from 'react-native';
-import { SearchStackParamList } from '../../interfaces/SearchStackParamList';
+import SearchStackParamList from '../../interfaces/navigatorParam/SearchStackParamList';
 
 function SearchResultScreen({
   route: {

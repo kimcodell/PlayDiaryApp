@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import HomeListEmptyComponent from '../../components/common/HomeListEmptyComponent';
-import PlayCommonComponent from '../../components/plays/PlayCommonComponent';
+import PlayCommonComponent from '../../components/playComponents/PlayCommonComponent';
 import Play from '../../interfaces/Play';
 
 const test: Play[] = [

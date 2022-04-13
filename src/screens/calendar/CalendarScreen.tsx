@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-function CalenderScreen() {
+function CalendarScreen() {
   return (
     <View>
       <Text>캘린더</Text>
@@ -9,4 +9,4 @@ function CalenderScreen() {
   );
 }
 
-export default CalenderScreen;
+export default CalendarScreen;
