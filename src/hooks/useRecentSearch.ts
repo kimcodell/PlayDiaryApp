@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
-import StorageHelper from '../StorageHelper';
+import StorageHelper from '../utils/StorageHelper';
 
-import { AppConstants } from './../AppConstants';
+import AppConstants from '../utils/AppConstants';
 
 function useRecentResearch(): [
   string[],

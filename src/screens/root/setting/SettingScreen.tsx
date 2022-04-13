@@ -19,7 +19,7 @@ import ResignModal from '../../../components/modal/ResignModal';
 import fontStyles from '../../../assets/styles/fontStyles';
 import AppColors from '../../../utils/AppColors';
 import { routes } from '../../../navigations/routes';
-import { AppConstants } from '../../../utils/AppConstants';
+import AppConstants from '../../../utils/AppConstants';
 
 function SettingScreen() {
   const [isVisibleLogoutModal, setIsVisibleLogoutModal] =

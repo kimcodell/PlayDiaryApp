@@ -15,9 +15,9 @@ export const routes = {
       SEARCH_SCREEN: 'tab/search/main',
       SEARCH_RESULT_SCREEN: 'tab/search/result',
     },
-    calender: {
-      CALENDER_STACK: 'tab/calender',
-      CALENDER_SCREERN: 'tab/calender/main',
+    calendar: {
+      CALENDAR_STACK: 'tab/calendar',
+      CALENDAR_SCREERN: 'tab/calendar/main',
     },
     mypage: {
       MYPAGE_STACK: 'tab/mypage',

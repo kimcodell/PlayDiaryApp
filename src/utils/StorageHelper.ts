@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppConstants } from './AppConstants';
+import AppConstants from './AppConstants';
 
 const StorageHelper = {
   async storeData(key: string, data: string): Promise<boolean> {

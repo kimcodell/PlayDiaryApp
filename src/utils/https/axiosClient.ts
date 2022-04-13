@@ -1,6 +1,6 @@
 import axios from 'axios';
 import StorageHelper from '../storageHelper';
-import { AppConstants } from '../AppConstants';
+import AppConstants from '../AppConstants';
 // import Config from 'react-native-config';
 
 const axiosClient = axios.create({

@@ -2,16 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import tailwind from 'twrnc';
-import useRecentResearch from '../../utils/hooks/useRecentSearch';
+import useRecentResearch from '../../hooks/useRecentSearch';
 import StorageHelper from '../../utils/StorageHelper';
 import { navigate } from '../../utils/RootNavigation';
 import { routes } from '../../navigations/routes';
 import Play from '../../interfaces/Play';
 import SearchInput from '../../components/input/SearchInput';
-import PlayCommonComponent from '../../components/plays/PlayCommonComponent';
+import PlayCommonComponent from '../../components/playComponents/PlayCommonComponent';
 import SearchKeywordTab from '../../components/common/SearchKeywordTab';
 
-import { AppConstants } from '../../utils/AppConstants';
+import AppConstants from '../../utils/AppConstants';
 import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
 
