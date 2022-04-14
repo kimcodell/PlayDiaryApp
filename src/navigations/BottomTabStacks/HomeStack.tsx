@@ -13,7 +13,10 @@ function HomeStack() {
       initialRouteName={routes.tab.home.HOME_SCREEN}
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: AppColors.white },
+        contentStyle: {
+          backgroundColor: AppColors.white,
+          paddingHorizontal: 20,
+        },
       }}>
       <Stack.Screen name={routes.tab.home.HOME_SCREEN} component={HomeScreen} />
     </Stack.Navigator>
