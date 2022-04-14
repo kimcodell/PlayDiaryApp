@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StyleSheet, Text } from 'react-native';
+import { KeyboardAwareFlatList } from 'react-native-keyboard-aware-scroll-view';
+import SearchStackParamList from '../../interfaces/navigatorParam/SearchStackParamList';
 import Play from '../../interfaces/Play';
 import SearchInput from '../../components/input/SearchInput';
 import PlayCommonComponent from '../../components/playComponents/PlayCommonComponent';
-import { fetchHotPlays } from '../../store/thunks/playThunk';
+import { fetchSearchResult } from '../../store/thunks/searchThunk';
 
-import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
+import fontStyles from '../../assets/styles/fontStyles';
+import { useDispatch } from 'react-redux';
 
 const test: Play[] = [
   {
@@ -79,53 +81,72 @@ const test: Play[] = [
   },
 ];
 
-function SearchScreen() {
+function SearchResultScreen({
+  route: {
+    params: { keyword },
+  },
+}: NativeStackScreenProps<SearchStackParamList, 'tab/search/result'>) {
   const dispatch = useDispatch();
 
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [hotPlayData, setHotPlayData] = useState<Play[]>([]);
+  const [searchResultData, setSearchResultData] = useState<Play[]>([]);
 
   useEffect(() => {
-    (async () => {
-      //TODO 요즘 뜨는 작품 요청 API 작업 필요.
-      // const { payload } = await dispatch(fetchHotPlays());
-      const payload = test;
-      setHotPlayData(payload);
-    })();
+    //TODO 검색결과 요청 API 연결.
+    // const {payload} = dispatch(fetchSearchResult(keyword));
+    const payload = test;
+    setSearchResultData(payload);
   }, []);
 
   return (
-    <KeyboardAwareScrollView
-      enableOnAndroid={true}
-      stickyHeaderIndices={[0]}
-      showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps="handled"
-      bounces={false}>
-      <SearchInput isFocused={isFocused} setIsFocused={setIsFocused} />
-      {!isFocused && hotPlayData.length !== 0 && (
-        <View style={styles.hotPlayListContainer}>
-          <Text style={styles.headerText}>요즘 뜨는 작품</Text>
-          {hotPlayData.map((play, index) => (
-            <PlayCommonComponent key={index} playData={play} />
-          ))}
-        </View>
+    <>
+      <SearchInput
+        isFocused={isFocused}
+        setIsFocused={setIsFocused}
+        defaultValue={keyword}
+        style={styles.searchBarBottom}
+      />
+      {!isFocused && (
+        <KeyboardAwareFlatList
+          contentContainerStyle={styles.resultContainer}
+          enableOnAndroid={true}
+          keyboardShouldPersistTaps="handled"
+          ListHeaderComponent={() => (
+            <Text style={styles.headerText}>검색 결과</Text>
+          )}
+          data={searchResultData}
+          renderItem={({ item }) => <PlayCommonComponent playData={item} />}
+          keyExtractor={(_, index) => index.toString()}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+        />
       )}
-    </KeyboardAwareScrollView>
+    </>
   );
 }
 
-export default SearchScreen;
+export default SearchResultScreen;
 
 const styles = StyleSheet.create({
-  hotPlayListContainer: {
-    flex: 1,
-    paddingTop: 14,
+  searchBar: {
     paddingHorizontal: 20,
-    borderTopWidth: 1,
-    borderTopColor: AppColors.grayLine,
+    paddingTop: 26,
+    paddingBottom: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: AppColors.grayLine,
+    backgroundColor: AppColors.white,
+  },
+  searchBarBottom: {
+    borderBottomWidth: 1,
+    borderBottomColor: AppColors.grayLine,
+  },
+  resultContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
   headerText: {
     ...fontStyles.header2,
+    marginTop: 14,
     marginBottom: 10,
   },
   deleteButtonText: {

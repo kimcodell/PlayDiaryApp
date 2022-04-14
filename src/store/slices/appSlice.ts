@@ -1,18 +1,19 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+interface appState {}
+
+const initialState: appState = {};
 
 const app = createSlice({
   name: 'app',
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder
-      .addDefaultCase(() => {})
+    builder.addDefaultCase(() => {});
   },
 });
 
-const {reducer, actions} = app;
+const { reducer, actions } = app;
 
 export const {} = actions;
 

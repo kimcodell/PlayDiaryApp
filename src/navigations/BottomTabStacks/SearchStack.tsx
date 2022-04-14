@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchScreen from '../../screens/search/SearchScreen';
-import SearchResultScreen from '../../screens/search/SearchResult';
+import SearchResultScreen from '../../screens/search/SearchResultScreen';
 
 import { routes } from '../routes';
 import AppColors from '../../utils/AppColors';

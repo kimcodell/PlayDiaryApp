@@ -1,12 +1,12 @@
 import axios from 'axios';
-import StorageHelper from '../storageHelper';
+import StorageHelper from '../StorageHelper';
 import AppConstants from '../AppConstants';
 // import Config from 'react-native-config';
 
 const axiosClient = axios.create({
   // baseURL: Config.BASE_URL,
   //TODO 환경변수(env)로 변경 필요.
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:8000/',
   headers: {
     'Content-Type': 'application/json',
   },
