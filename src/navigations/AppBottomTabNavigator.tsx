@@ -7,6 +7,7 @@ import CalendarStack from './BottomTabStacks/CalendarStack';
 import MypageStack from './BottomTabStacks/MypageStack';
 import HomeIcon from '../assets/icons/HomeIcon';
 import SearchIcon from '../assets/icons/SearchIcon';
+import CalendarIcon from '../assets/icons/CalendarIcon';
 import UserIcon from '../assets/icons/UserIcon';
 import { routes } from './routes';
 
@@ -81,13 +82,13 @@ function AppBottomTabNavigator() {
         component={CalendarStack}
         options={{
           tabBarLabel: AppConstants.BOTTOM_TAB_LABEL.CALENDAR,
-          // tabBarIcon: ({ focused }) => (
-          //   <CalendarIcon
-          //     width={24}
-          //     height={24}
-          //     color={focused ? AppColors.mainColor : AppColors.gray}
-          //   />
-          // ),
+          tabBarIcon: ({ focused }) => (
+            <CalendarIcon
+              width={24}
+              height={24}
+              color={focused ? AppColors.mainColor : AppColors.gray}
+            />
+          ),
           tabBarAccessibilityLabel: AppConstants.BOTTOM_TAB_LABEL.CALENDAR,
         }}
       />
