@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { TabBar, TabView, SceneMap } from 'react-native-tab-view';
-import FollowerListScene from './FollowerListScene';
-import FollowingListScene from './FollowingListScene';
+import RatingsScene from './RatingsScene';
+import ReviewsScene from './ReviewsScence';
+import WantsPlaysScene from './WantsPlaysScene';
 
 import fontStyles from '../../assets/styles/fontStyles';
 import AppColors from '../../utils/AppColors';
 
 const renderScene = SceneMap({
-  followers: FollowerListScene,
-  followings: FollowingListScene,
+  ratings: RatingsScene,
+  reviews: ReviewsScene,
+  wants: WantsPlaysScene,
 });
 
 const renderTabBar = (props: any) => (
@@ -24,11 +26,12 @@ const renderTabBar = (props: any) => (
 );
 
 const routes = [
-  { key: 'followers', title: '팔로워' },
-  { key: 'followings', title: '팔로잉' },
+  { key: 'ratings', title: '평가' },
+  { key: 'reviews', title: '후기' },
+  { key: 'wants', title: '보고 싶은' },
 ];
 
-function FollowListScreen() {
+function ArchiveScreen() {
   const [index, setIndex] = useState(0);
 
   return (
@@ -41,7 +44,7 @@ function FollowListScreen() {
   );
 }
 
-export default FollowListScreen;
+export default ArchiveScreen;
 
 const styles = StyleSheet.create({
   labelText: {

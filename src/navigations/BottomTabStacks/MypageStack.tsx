@@ -4,10 +4,12 @@ import MypageScreen from '../../screens/mypage/MypageScreen';
 import StatisticsScreen from '../../screens/mypage/StatisticsScreen';
 import FollowListScreen from '../../screens/mypage/FollowListScreen';
 import SettingScreen from '../../screens/root/setting/SettingScreen';
-
+import { headerComponentCreator } from '../RootStackNavigator';
 import { routes } from '../routes';
+
 import AppColors from '../../utils/AppColors';
-import CommonHeader from '../../components/common/CommonHeader';
+import AppConstants from '../../utils/AppConstants';
+import ArchiveScreen from '../../screens/mypage/ArchiveScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,21 +32,30 @@ function MypageStack() {
         name={routes.tab.mypage.STATISTICS_SCREEN}
         component={StatisticsScreen}
         options={{
-          headerLeft: () => <CommonHeader headerTitle="관람분석" />,
+          headerLeft: headerComponentCreator(
+            AppConstants.HEADER_TITLE.STATISTICS,
+          ),
         }}
       />
       <Stack.Screen
         name={routes.tab.mypage.FOLLOW_LIST_SCREEN}
         component={FollowListScreen}
         options={{
-          headerLeft: () => <CommonHeader headerTitle="팔로우" />,
+          headerLeft: headerComponentCreator(AppConstants.HEADER_TITLE.FOLLOW),
         }}
       />
       <Stack.Screen
         name={routes.tab.mypage.SETTING_SCREEN}
         component={SettingScreen}
         options={{
-          headerLeft: () => <CommonHeader headerTitle="설정" />,
+          headerLeft: headerComponentCreator(AppConstants.HEADER_TITLE.SETTING),
+        }}
+      />
+      <Stack.Screen
+        name={routes.tab.mypage.ARCHIVE_SCREEN}
+        component={ArchiveScreen}
+        options={{
+          headerLeft: headerComponentCreator(AppConstants.HEADER_TITLE.ARCHIVE),
         }}
       />
     </Stack.Navigator>

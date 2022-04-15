@@ -7,8 +7,11 @@ import { routes } from '../../navigations/routes';
 function MypageScreen() {
   return (
     <View>
+      <Pressable onPress={() => navigate(routes.tab.mypage.FOLLOW_LIST_SCREEN)}>
+        <Text>팔로우</Text>
+      </Pressable>
       <Pressable onPress={() => navigate(routes.tab.mypage.SETTING_SCREEN)}>
-        <Text>q</Text>
+        <Text>설정</Text>
       </Pressable>
     </View>
   );

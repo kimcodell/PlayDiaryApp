@@ -1,14 +1,17 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import tailwind from 'twrnc';
+import { routes } from './routes';
 import AppBottomTabNavigator from './AppBottomTabNavigator';
 import PlayDetailScreen from '../screens/root/PlayDetailScreen';
 import ChangeProfileScreen from '../screens/root/setting/ChangeProfileScreen';
 import ChangePasswordScreen from '../screens/root/setting/ChangePasswordScreen';
-
-import tailwind from 'twrnc';
-import { routes } from './routes';
 import CommonHeader from '../components/common/CommonHeader';
+import AppConstants from '../utils/AppConstants';
+
+export const headerComponentCreator = (title: string) => () =>
+  <CommonHeader headerTitle={title} />;
 
 const Stack = createNativeStackNavigator();
 
@@ -32,14 +35,18 @@ function RootStackNavigator() {
           name={routes.root.CHANGE_PROFILE_SCREEN}
           component={ChangeProfileScreen}
           options={{
-            headerLeft: () => <CommonHeader headerTitle="프로필 수정" />,
+            headerLeft: headerComponentCreator(
+              AppConstants.HEADER_TITLE.CHANGE_PROFILE,
+            ),
           }}
         />
         <Stack.Screen
           name={routes.root.CHANGE_PASSWORD_SCREEN}
           component={ChangePasswordScreen}
           options={{
-            headerLeft: () => <CommonHeader headerTitle="비밀번호 변경" />,
+            headerLeft: headerComponentCreator(
+              AppConstants.HEADER_TITLE.CHANGE_PASSWORD,
+            ),
           }}
         />
       </Stack.Navigator>

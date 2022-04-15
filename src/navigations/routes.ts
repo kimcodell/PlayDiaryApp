@@ -22,8 +22,9 @@ export const routes = {
     mypage: {
       MYPAGE_STACK: 'tab/mypage',
       MYPAGE_SCREEN: 'tab/mypage/main',
-      STATISTICS_SCREEN: 'tab/mypage/statistics',
       FOLLOW_LIST_SCREEN: 'tab/mypage/follows',
+      ARCHIVE_SCREEN: 'root/mypage/archive',
+      STATISTICS_SCREEN: 'tab/mypage/statistics',
       SETTING_SCREEN: 'root/mypage/setting',
     },
   },
