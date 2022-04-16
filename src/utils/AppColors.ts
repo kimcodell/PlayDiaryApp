@@ -5,6 +5,8 @@ const AppColors = Object.freeze({
   background: '#F3F6FB',
   grayLine: '#D2DAE0',
   inputBackground: '#F7F7F7',
+  followButtonBackground: '#FFB9B9',
+  followButtonInactiveBackground: '#F0F0F0',
   pressEffect1: '#E3E3E3',
   error: '#FF3030',
   gray: '#C3C9D3',

@@ -99,8 +99,8 @@ function AppBottomTabNavigator() {
           tabBarLabel: AppConstants.BOTTOM_TAB_LABEL.MYPAGE,
           tabBarIcon: ({ focused }) => (
             <UserIcon
-              width={24}
-              height={24}
+              width={22}
+              height={22}
               color={focused ? AppColors.mainColor : AppColors.gray}
             />
           ),

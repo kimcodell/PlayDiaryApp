@@ -9,20 +9,20 @@ import {
 import { TabView, SceneRendererProps } from 'react-native-tab-view';
 import tailwind from 'twrnc';
 import VerticalBarIcon from '../../assets/icons/VerticalBarIcon';
-import PressableChip from '../../components/chip/PressableChip';
+import PressableChip from '../../components/common/chip/PressableChip';
 import PlayListScene from './PlayListScene';
 import MusicalListScene from './MusicalListScene';
+import NullComponent from '../../components/common/NullComponent';
 
 import AppColors from '../../utils/AppColors';
 import fontStyles from '../../assets/styles/fontStyles';
 
-const routes = [
-  { key: 'musical', title: '뮤지컬' },
-  { key: 'play', title: '연극' },
-];
-
 function HomeScreen() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
+  const [routes] = useState([
+    { key: 'musical', title: '뮤지컬' },
+    { key: 'play', title: '연극' },
+  ]);
   const [sizeOptions, setSizeOptions] = useState<
     Array<{ name: string; selected: boolean }>
   >([
@@ -53,8 +53,6 @@ function HomeScreen() {
     },
     [sizeOptions],
   );
-
-  const renderNothing = useCallback((props: SceneRendererProps) => <></>, []);
 
   const onPressOption = useCallback(
     (index: number) => () => {
@@ -116,7 +114,7 @@ function HomeScreen() {
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        renderTabBar={renderNothing}
+        renderTabBar={NullComponent}
       />
     </SafeAreaView>
   );

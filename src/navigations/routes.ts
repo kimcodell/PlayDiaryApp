@@ -2,6 +2,10 @@ export const routes = {
   root: {
     INIT: '/',
     PLAY_DETAIL_SCREEN: 'root/play-detail',
+    OTHER_USER_PROFILE: 'root/other-user-profile/main',
+    FOLLOW_LIST_SCREEN: 'root/other-user-profile/follows',
+    ARCHIVE_SCREEN: 'root/other-user-profile/archive',
+    STATISTICS_SCREEN: 'tab/other-user-profile/statistics',
     CHANGE_PROFILE_SCREEN: 'root/mypage/change-profile',
     CHANGE_PASSWORD_SCREEN: 'root/mypage/change-password',
   },
@@ -22,9 +26,10 @@ export const routes = {
     mypage: {
       MYPAGE_STACK: 'tab/mypage',
       MYPAGE_SCREEN: 'tab/mypage/main',
-      STATISTICS_SCREEN: 'tab/mypage/statistics',
       FOLLOW_LIST_SCREEN: 'tab/mypage/follows',
-      SETTING_SCREEN: 'root/mypage/setting',
+      ARCHIVE_SCREEN: 'tab/mypage/archive',
+      STATISTICS_SCREEN: 'tab/mypage/statistics',
+      SETTING_SCREEN: 'tab/mypage/setting',
     },
   },
   auth: {
