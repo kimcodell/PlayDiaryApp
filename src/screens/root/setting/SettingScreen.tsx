@@ -13,8 +13,8 @@ import DeviceInfo from 'react-native-device-info';
 import * as RootNavigation from '../../../utils/RootNavigation';
 import ChevronRightIcon from '../../../assets/icons/ChevronRightIcon';
 import Divider from '../../../components/common/Divider';
-import LogoutModal from '../../../components/modal/LogoutModal';
-import ResignModal from '../../../components/modal/ResignModal';
+import LogoutModal from '../../../components/common/modal/LogoutModal';
+import ResignModal from '../../../components/common/modal/ResignModal';
 
 import fontStyles from '../../../assets/styles/fontStyles';
 import AppColors from '../../../utils/AppColors';

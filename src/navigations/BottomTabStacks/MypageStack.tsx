@@ -3,13 +3,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MypageScreen from '../../screens/mypage/MypageScreen';
 import StatisticsScreen from '../../screens/mypage/StatisticsScreen';
 import FollowListScreen from '../../screens/mypage/FollowListScreen';
+import ArchiveScreen from '../../screens/mypage/ArchiveScreen';
 import SettingScreen from '../../screens/root/setting/SettingScreen';
+import FollowerFollowingIndex from '../../enums/FollowerFollowingIndex';
 import { headerComponentCreator } from '../RootStackNavigator';
 import { routes } from '../routes';
 
 import AppColors from '../../utils/AppColors';
 import AppConstants from '../../utils/AppConstants';
-import ArchiveScreen from '../../screens/mypage/ArchiveScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,8 +41,10 @@ function MypageStack() {
       <Stack.Screen
         name={routes.tab.mypage.FOLLOW_LIST_SCREEN}
         component={FollowListScreen}
+        initialParams={{ startIndex: FollowerFollowingIndex['팔로워'] }}
         options={{
           headerLeft: headerComponentCreator(AppConstants.HEADER_TITLE.FOLLOW),
+          headerShadowVisible: false,
         }}
       />
       <Stack.Screen
@@ -56,6 +59,7 @@ function MypageStack() {
         component={ArchiveScreen}
         options={{
           headerLeft: headerComponentCreator(AppConstants.HEADER_TITLE.ARCHIVE),
+          headerShadowVisible: false,
         }}
       />
     </Stack.Navigator>

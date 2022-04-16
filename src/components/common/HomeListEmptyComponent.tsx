@@ -9,6 +9,7 @@ import {
 import tailwind from 'twrnc';
 import CryingEmoticon from '../../assets/icons/CryingEmoticon';
 import RefreshIcon from '../../assets/icons/RefreshIcon';
+import fontStyles from '../../assets/styles/fontStyles';
 
 import AppColors from '../../utils/AppColors';
 
@@ -30,7 +31,7 @@ function HomeListEmptyComponent({
             일시적인 오류입니다.
           </Text>
           <Text style={styles.emptyComponentText}>
-            새로고침을 시도해주세요.
+            새로고침을 시도해 주세요.
           </Text>
           <TouchableHighlight
             style={styles.refreshButton}
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emptyComponentText: {
-    fontSize: 14,
+    ...fontStyles.text14,
     lineHeight: 20,
     color: AppColors.textSecondary,
   },

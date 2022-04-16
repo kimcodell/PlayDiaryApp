@@ -11,10 +11,10 @@ import {
 import Modal from 'react-native-modal';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import tailwind from 'twrnc';
-import AppStyles from '../../assets/styles/AppStyles';
 
-import fontStyles from '../../assets/styles/fontStyles';
-import AppColors from '../../utils/AppColors';
+import AppStyles from '../../../assets/styles/AppStyles';
+import fontStyles from '../../../assets/styles/fontStyles';
+import AppColors from '../../../utils/AppColors';
 
 const StatutsBarHeight = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
 const Height = Dimensions.get('screen').height;
@@ -24,15 +24,15 @@ interface ModalProps {
   setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-function ResignModal({ isVisible, setVisible }: ModalProps) {
+function LogoutModal({ isVisible, setVisible }: ModalProps) {
   const onDismiss = useCallback(() => {
     setVisible(false);
   }, []);
 
-  const onResign = useCallback(() => {
+  const onLogout = useCallback(() => {
     setVisible(false);
-    //TODO 회원 탈퇴 기능 추가.
-    console.log('회원 탈퇴');
+    //TODO 로그아웃 기능 추가.
+    console.log('로그아웃');
   }, []);
 
   return (
@@ -43,19 +43,16 @@ function ResignModal({ isVisible, setVisible }: ModalProps) {
         onBackdropPress={onDismiss}
         onBackButtonPress={onDismiss}>
         <View style={tailwind`items-center`}>
-          <Text style={styles.titleText}>회원 탈퇴</Text>
-          <Text style={styles.contentText}>
-            {`한 번 탈퇴하면 계정을 복구할 수 없습니다.
-              정말 탈퇴하시겠습니까?`}
-          </Text>
+          <Text style={styles.titleText}>로그아웃</Text>
+          <Text style={styles.contentText}>정말 로그아웃 하시겠습니까?</Text>
           <View style={tailwind`flex-row`}>
             <TouchableHighlight
               style={[styles.buttonContainer, tailwind`mr-1`]}
-              onPress={onResign}
-              accessibilityLabel="탈퇴하기"
+              onPress={onLogout}
+              accessibilityLabel="로그아웃"
               accessibilityRole="button"
               underlayColor={AppColors.pressEffect1}>
-              <Text style={styles.buttonText}>탈퇴하기</Text>
+              <Text style={styles.buttonText}>로그아웃</Text>
             </TouchableHighlight>
             <TouchableHighlight
               style={[
@@ -77,7 +74,7 @@ function ResignModal({ isVisible, setVisible }: ModalProps) {
   );
 }
 
-export default ResignModal;
+export default LogoutModal;
 
 const styles = StyleSheet.create({
   container: {
@@ -96,7 +93,6 @@ const styles = StyleSheet.create({
   },
   contentText: {
     ...fontStyles.text16,
-    lineHeight: 24,
     color: AppColors.textSecondary,
     paddingVertical: 16,
   },

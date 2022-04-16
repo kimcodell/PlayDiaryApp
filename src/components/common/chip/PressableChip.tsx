@@ -6,8 +6,8 @@ import {
   Text,
   ViewStyle,
 } from 'react-native';
-import fontStyles from '../../assets/styles/fontStyles';
-import AppColors from '../../utils/AppColors';
+import fontStyles from '../../../assets/styles/fontStyles';
+import AppColors from '../../../utils/AppColors';
 
 interface PressableChipProps {
   selected?: boolean;
