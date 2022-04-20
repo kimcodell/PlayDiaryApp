@@ -1,4 +1,8 @@
 # PlayDiaryApp
+## URL
+노션: https://responsible-puck-d6d.notion.site/683a4a72f8654d1390d2956917377cd5  
+피그마: 
+
 ## Used Stack
 Typescript  
 React Native  
