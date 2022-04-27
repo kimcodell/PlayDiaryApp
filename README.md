@@ -1,7 +1,7 @@
 # PlayDiaryApp
 ## URL
 노션: https://responsible-puck-d6d.notion.site/683a4a72f8654d1390d2956917377cd5  
-피그마: 
+피그마: https://www.figma.com/file/pBZwfcTtiI6TwibO8vJ4ds/%EA%B3%B5%EC%97%B0-%EC%A0%95%EB%B3%B4-%EC%95%B1?node-id=0%3A1
 
 ## Used Stack
 Typescript  
